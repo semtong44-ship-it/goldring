@@ -2,85 +2,32 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>시간표와 미디어</title>
+  <title>로그인</title>
 </head>
 <body>
-  <h1>나의 시간표</h1>
 
-  <table border="1">
-    <tr>
-      <th>교시</th>
-      <th>월</th>
-      <th>화</th>
-      <th>수</th>
-      <th>목</th>
-      <th>금</th>
-    </tr>
-    <tr>
-      <td>1교시</td>
-      <td>국사2</td>
-      <td>진로</td>
-      <td>대수</td>
-      <td>문학</td>
-      <td>국사2</td>
-    </tr>
-    <tr>
-      <td>2교시</td>
-      <td>문학</td>
-      <td>문학</td>
-      <td>국사2</td>
-      <td>대수</td>
-      <td>중국</td>
-    </tr>
-    <tr>
-      <td>3교시</td>
-      <td>스포</td>
-      <td>빅분</td>
-      <td>빅분2</td>
-      <td>응화2</td>
-      <td>문학</td>
-    </tr>
-    <tr>
-      <td>4교시</td>
-      <td>중국</td>
-      <td>빅분</td>
-      <td>빅분</td>
-      <td>응화2</td>
-      <td>대수</td>
-    </tr>
-    <tr>
-      <td>5교시</td>
-      <td>응화2</td>
-      <td>사회2</td>
-      <td>스포</td>
-      <td>스포</td>
-      <td>창체</td>
-    </tr>
-    <tr>
-      <td>6교시</td>
-      <td>응화2</td>
-      <td>대수</td>
-      <td>사회2</td>
-      <td>중국</td>
-      <td>창체</td>
-    </tr>
-    <tr>
-      <td>7교시</td>
-      <td></td>
-      <td>문학</td>
-      <td></td>
-      <td>대수</td>
-      <td></td>
-    </tr>
-  </table>
+  <h1>로그인</h1>
 
-  <h1>동영상</h1>
-  <video src="LEMONADE.mp4" width="400" controls>
-  </video>
+  <form action="4b_login_success.html" method="get">
 
-  <h1>소리</h1>
-  <audio src="sample.mp3" controls>
-  </audio>
+    <p>
+      <label for="userid">아이디</label><br>
+      <input type="text" id="userid" name="userid" placeholder="아이디를 입력하세요">
+    </p>
+
+    <p>
+      <label for="userpw">비밀번호</label><br>
+      <input type="password" id="userpw" name="userpw" placeholder="비밀번호를 입력하세요">
+    </p>
+
+    <p>
+      <input type="checkbox" id="remember" name="remember">
+      <label for="remember">아이디 저장</label>
+    </p>
+
+    <button type="submit">로그인</button>
+
+  </form>
 
 </body>
 </html>
