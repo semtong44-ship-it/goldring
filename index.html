@@ -59,5 +59,28 @@
 <html lang="ko">
 <head>
   <meta charest="UTF-8">
-  
+  <title>예시2 - 카드 단위로 div 나누기</title>
+  <style>
+    * { box-sizing:border-box; }
+    body { font-family: sans-serif; background: #eee; margin: 0; padding: 30px; }
+
+    .card-list {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* 카드 하나 = 콘텐츠 묶음 div */
+    .card {
+      background: white;
+      width: 220px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* 카드 내부를 다시 이미지 영역 / 텍스트 영역으로 나눈 중첩 div */
+    .card-image {
+      background
+  </style>
 </head>
