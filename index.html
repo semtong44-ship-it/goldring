@@ -3,130 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <title>게임 공략집 기록 사이트</title>
-    <!-- CSS 파일 분리 연결 -->
-    <link rel="stylesheet" href="style.css">
+    <!-- link 태그 사용 조건 충족용 -->
+    <link rel="icon" href="data:,">
+    
+    <!-- [CSS 영역] 디자인을 담당합니다 -->
+    <style>
+        body { background-color: #e0e0e0; margin: 0; padding: 20px; font-family: sans-serif; }
+        #container { background-color: #333333; width: 1000px; padding: 20px; margin: 0 auto; border: 1px solid black; color: white; }
+
+        /* 1. 헤더 영역 */
+        #header { display: flex; justify-content: space-between; align-items: center; border: 2px solid white; padding: 10px; margin-bottom: 20px; }
+        .profile-box { display: flex; align-items: center; width: 250px; }
+        .profile-img img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; background-color: white; object-fit: cover; }
+        .profile-text { margin-left: 15px; }
+        .id-box, .rank-box { background-color: white; color: black; width: 120px; height: 25px; margin-bottom: 5px; text-align: center; font-weight: bold; line-height: 25px; }
+        .interest-box { border: 2px solid white; padding: 10px; width: 400px; text-align: center; }
+        .interest-box ul { display: flex; justify-content: center; padding: 0; margin: 0 0 10px 0; list-style: none; }
+        .circle { margin: 0 10px; }
+        .circle img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; }
+        .interest-title { font-size: 14px; }
+        .login-box { display: flex; flex-direction: column; gap: 5px; }
+        .login-box a { display: inline-block; background-color: white; color: black; padding: 5px 15px; text-decoration: none; font-weight: bold; text-align: center; }
+
+        /* 2. 메인 컨텐츠 영역 */
+        #main-content { display: flex; }
+        #sidebar { width: 250px; border: 2px solid white; padding: 15px; margin-right: 30px; }
+        .current-game { background-color: #55efc4; color: black; padding: 10px; margin-bottom: 20px; text-align: center; font-weight: bold; cursor: pointer; }
+        .btn-write { display: block; background-color: #fdcb6e; color: black; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; cursor: pointer; text-decoration: none; }
+        .board-title { text-align: center; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid white; font-weight: bold; }
+        .board-list { padding: 0; list-style: none; }
+        .board-list li { background-color: white; margin-bottom: 10px; text-align: center; cursor: pointer; color: black; padding: 10px; }
+        .board-list li:hover { background-color: #dddddd; }
+
+        /* 3. 본문 영역 */
+        #content-area { width: 40%; flex-grow: 1; border: 2px solid white; padding: 20px; color: black; }
+        #post-view h2, #write-form h2 { background-color: #bbbbbb; padding: 10px; margin-top: 0; text-align: center; }
+        .video-box { border: 5px solid #555555; background-color: #dddddd; margin-bottom: 20px; text-align: center; }
+        .video-box img { max-width: 100%; max-height: 250px; }
+        .text-box { background-color: white; padding: 10px; margin-bottom: 10px; min-height: 20px; }
+
+        /* 표(table) 스타일 */
+        table { width: 100%; border-collapse: collapse; text-align: center; background-color: white; margin-bottom: 10px; }
+        th, td { border: 1px solid black; padding: 8px; }
+        th { background-color: #eee; }
+
+        /* 폼 영역 */
+        #write-form { display: none; }
+        .form-area input, .form-area textarea { width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }
+        .form-area textarea { height: 150px; }
+        .submit-btn { display: block; background-color: #55efc4; padding: 15px; text-align: center; color: black; text-decoration: none; font-weight: bold; }
+    </style>
 </head>
 <body>
     <div id="container">
+        
         <!-- 1. 헤더 영역 -->
         <div id="header">
             <div class="profile-box">
                 <div class="profile-img">
-                    <!-- 텍스트 대신 실제 이미지 삽입 (임시 이미지 링크 사용) -->
-                    <img src="https://via.placeholder.com/70/a29bfe/ffffff?text=GR" alt="골드링 프로필">
+                    <img id="user-img" src="https://via.placeholder.com/70/cccccc/000000?text=G" alt="프로필">
                 </div>
                 <div class="profile-text">
-                    <div class="id-box">goldring</div>
-                    <div class="rank-box">랭킹 32위</div>
+                    <div id="user-id" class="id-box">게스트</div>
+                    <div id="user-rank" class="rank-box">로그인 필요</div>
                 </div>
             </div>
 
             <div class="interest-box">
                 <ul>
-                    <!-- 누르면 실제 게임 사이트로 이동하는 로고들 -->
-                    <li class="circle">
-                        <a href="https://kr.leagueoflegends.com" target="_blank">
-                            <img src="https://via.placeholder.com/40/0984e3/ffffff?text=LOL" alt="롤 로고">
-                        </a>
-                    </li>
-                    <li class="circle">
-                        <a href="https://maplestory.nexon.com" target="_blank">
-                            <img src="https://via.placeholder.com/40/fdcb6e/ffffff?text=Map" alt="메이플 로고">
-                        </a>
-                    </li>
-                    <li class="circle">
-                        <a href="https://playvalorant.com" target="_blank">
-                            <img src="https://via.placeholder.com/40/ff7675/ffffff?text=VAL" alt="발로란트 로고">
-                        </a>
-                    </li>
+                    <li class="circle"><a href="https://kr.leagueoflegends.com" target="_blank"><img src="https://via.placeholder.com/40/0984e3/ffffff?text=LOL" alt="롤"></a></li>
+                    <li class="circle"><a href="https://maplestory.nexon.com" target="_blank"><img src="https://via.placeholder.com/40/fdcb6e/ffffff?text=Map" alt="메이플"></a></li>
+                    <li class="circle"><a href="https://playvalorant.com" target="_blank"><img src="https://via.placeholder.com/40/ff7675/ffffff?text=VAL" alt="발로란트"></a></li>
                 </ul>
-                <span class="interest-title">관심 게임 사이트 (클릭시 이동)</span>
+                <span class="interest-title">관심 게임 사이트</span>
             </div>
 
-            <div class="login-box">
-                <a href="#login-info" class="login-btn">로그인/회원정보</a>
+            <div id="login-buttons" class="login-box">
+                <a href="#" onclick="login(); return false;">로그인</a>
+                <a href="#" onclick="signup(); return false;">회원가입</a>
             </div>
         </div>
 
-        <!-- 2. 하단 컨텐츠 영역 -->
+        <!-- 2. 메인 컨텐츠 영역 -->
         <div id="main-content">
             
             <!-- 사이드 메뉴 -->
             <div id="sidebar">
-                <div class="current-game">
-                    <img src="https://via.placeholder.com/20/0984e3/ffffff?text=L" alt="미니로고">
-                    현재 게임: 리그오브레전드
+                <div class="current-game" onclick="toggleGame()">
+                    <span id="game-icon">🎮</span> <br>
+                    <span id="game-name">현재 게임: 리그오브레전드</span>
                 </div>
                 
-                <!-- 글 작성칸 버튼 (클릭 시 우측 화면 변경) -->
-                <a href="#write-form" class="btn-write">✍️ 글 작성칸</a>
+                <a href="#" class="btn-write" onclick="showWriteForm(); return false;">✍️ 글 작성칸</a>
                 
-                <div class="board-title">리그오브레전드 공략 목록</div>
-                <ul class="board-list">
-                    <!-- 클릭 시 우측 화면이 해당 공략으로 변경되도록 a 태그의 href 지정 -->
-                    <li><a href="#post1">가렌 초보자 템트리</a></li>
-                    <li><a href="#post2">정글 동선 짜는 법</a></li>
-                    <li><a href="#post3">미드 챔피언 상성표</a></li>
+                <div id="board-title" class="board-title">리그오브레전드 공략</div>
+                <ul id="board-list" class="board-list">
+                    <!-- 자바스크립트가 여기에 목록을 그려줍니다 -->
                 </ul>
             </div>
 
-            <!-- 3. 본문 영역 (클릭에 따라 바뀌는 부분) -->
+            <!-- 3. 본문 영역 -->
             <div id="content-area">
                 
-                <!-- [숨김 화면 1] 가렌 공략 -->
-                <div id="post1" class="view-section target-view">
-                    <h2>가렌 초보자 템트리</h2>
-                    <div class="video-box">
-                        <img src="https://via.placeholder.com/500x200/55efc4/000000?text=Garen+Video" alt="가렌 영상 썸네일">
+                <!-- 글 보기 화면 -->
+                <div id="post-view">
+                    <h2 id="post-title">공략을 선택해주세요</h2>
+                    <div id="post-media" class="video-box">
+                        <img src="https://via.placeholder.com/500x200?text=Select+Post" alt="대기 화면">
                     </div>
-                    <div class="text-box">1. 첫 아이템은 도란의 방패를 추천합니다.</div>
-                    <div class="text-box">2. Q 스킬로 이동속도를 올리고 적에게 진입하세요.</div>
-                    <div class="text-box">3. 패시브를 활용해 체력을 회복하는 것이 핵심입니다!</div>
-                </div>
-
-                <!-- [숨김 화면 2] 정글 동선 공략 -->
-                <div id="post2" class="view-section target-view">
-                    <h2>정글 동선 짜는 법</h2>
-                    <div class="video-box">
-                        <img src="https://via.placeholder.com/500x200/74b9ff/000000?text=Jungle+Route" alt="정글 공략 영상">
+                    <div id="post-content">
+                        <div class="text-box">
+                            <p>좌측에서 공략을 선택하거나 새 글을 작성하세요.</p>
+                        </div>
                     </div>
-                    <div class="text-box">1. 시작은 바텀 듀오의 리쉬를 받는 쪽이 편합니다.</div>
-                    <div class="text-box">2. 3캠프 후 바위게 싸움이나 갱킹을 판단하세요.</div>
-                    <div class="text-box">3. 오브젝트(용/유충) 시야 장악은 필수입니다.</div>
                 </div>
 
-                <!-- [숨김 화면 3] 상성표 (표 태그 활용 조건 충족용) -->
-                <div id="post3" class="view-section target-view">
-                    <h2>미드 챔피언 상성표</h2>
-                    <table class="info-table">
-                        <tr><th>내 챔피언</th><th>상대 챔피언</th><th>상성</th></tr>
-                        <tr><td>아리</td><td>제드</td><td>불리함</td></tr>
-                        <tr><td>탈론</td><td>카사딘</td><td>유리함</td></tr>
-                    </table>
-                </div>
-
-                <!-- [숨김 화면 4] 새 글 작성 폼 -->
-                <div id="write-form" class="view-section target-view">
+                <!-- 글 작성 화면 -->
+                <div id="write-form">
                     <h2>새 공략 작성하기</h2>
                     <div class="form-area">
-                        <input type="text" placeholder="공략 제목을 입력하세요">
-                        <input type="text" placeholder="이미지나 영상 주소를 넣어주세요">
-                        <textarea placeholder="공략 내용을 자세히 적어주세요."></textarea>
-                        <a href="#default-view" class="submit-btn">게시판에 등록하기</a>
+                        <input type="text" id="write-title" placeholder="공략 제목 (예: 가렌 템트리)">
+                        <input type="text" id="write-media" placeholder="이미지 URL (생략 시 기본 이미지)">
+                        <textarea id="write-text" placeholder="내용을 적어주세요."></textarea>
+                        <a href="#" class="submit-btn" onclick="submitPost(); return false;">게시판에 등록하기</a>
                     </div>
-                </div>
-
-                <!-- [기본 화면] 아무것도 누르지 않았을 때 보이는 첫 화면 (반드시 제일 아래에 배치) -->
-                <div id="default-view" class="view-section">
-                    <h2>공략을 선택해주세요</h2>
-                    <div class="video-box">
-                        <p>좌측 메뉴에서 <strong>공략 제목</strong>을 누르거나<br><strong>글 작성칸</strong>을 클릭해보세요.</p>
-                    </div>
-                    <div class="text-box">현재 선택된 게시글이 없습니다.</div>
                 </div>
 
             </div>
         </div>
     </div>
+
+    <!-- [JavaScript 영역] 사이트의 동작을 담당합니다 -->
+    <script>
+        // 초기 데이터 (표와 순서있는 목록(ol) 조건 충족)
+        let currentGame = 'lol'; 
+
+        let posts = {
+            'lol': [
+                { title: "가렌 초보자 가이드", media: "https://via.placeholder.com/500x200/0984e3/fff?text=Garen", content: "<p>Q 스킬을 쓰고 달리세요!</p><br><p>W로 데미지를 감소시킵니다.</p>" },
+                { title: "미드 챔피언 상성표", media: "https://via.placeholder.com/500x200/74b9ff/fff?text=Mid+Tier", content: "<table><tr><th>내 챔피언</th><th>상대</th><th>유불리</th></tr><tr><td>아리</td><td>제드</td><td>불리</td></tr><tr><td>탈론</td><td>빅토르</td><td>유리</td></tr></table>" }
+            ],
+            'maple': [
+                { title: "200레벨 폭업 사냥터", media: "https://via.placeholder.com/500x200/fdcb6e/fff?text=Level+Up", content: "<p>190부터는 황혼의 페리온으로 가세요.</p><br><p>경험치 쿠폰을 꼭 사용하세요.</p>" },
+                { title: "무자본 돈 버는 법", media: "https://via.placeholder.com/500x200/ffeaa7/000?text=Meso", content: "<p>매일 해야 할 일 순서:</p><ol><li>우르스 3판 돌기</li><li>보스 장신구 팔기</li><li>일일 퀘스트 완료</li></ol>" }
+            ]
+        };
+
+        function login() {
+            let randomRank = Math.floor(Math.random() * 100) + 1; 
+            document.getElementById('user-id').innerText = "goldring";
+            document.getElementById('user-rank').innerText = "랭킹 " + randomRank + "위";
+            document.getElementById('user-img').src = "https://via.placeholder.com/70/a29bfe/fff?text=GR";
+            document.getElementById('login-buttons').style.display = "none";
+            alert("환영합니다, goldring님!");
+        }
+
+        function signup() {
+            let newId = prompt("사용할 아이디를 입력하세요:");
+            if(newId) {
+                let randomRank = Math.floor(Math.random() * 901) + 100; 
+                document.getElementById('user-id').innerText = newId;
+                document.getElementById('user-rank').innerText = "랭킹 " + randomRank + "위";
+                document.getElementById('user-img').src = "https://via.placeholder.com/70/55efc4/000?text=" + newId.charAt(0);
+                document.getElementById('login-buttons').style.display = "none";
+                alert("회원가입 완료! 랭킹이 부여되었습니다.");
+            }
+        }
+
+        function toggleGame() {
+            currentGame = (currentGame === 'lol') ? 'maple' : 'lol';
+            let gameNameText = currentGame === 'lol' ? "리그오브레전드" : "메이플스토리";
+            
+            document.getElementById('game-name').innerText = "현재 게임: " + gameNameText;
+            document.getElementById('board-title').innerText = gameNameText + " 공략";
+            
+            renderBoard(); 
+        }
+
+        function renderBoard() {
+            let listArea = document.getElementById('board-list');
+            listArea.innerHTML = ''; 
+            
+            let currentPosts = posts[currentGame];
+            for(let i = 0; i < currentPosts.length; i++) {
+                let li = document.createElement('li');
+                li.innerText = currentPosts[i].title;
+                li.onclick = function() { showPost(i); };
+                listArea.appendChild(li);
+            }
+        }
+
+        function showPost(index) {
+            document.getElementById('post-view').style.display = 'block';
+            document.getElementById('write-form').style.display = 'none';
+
+            let post = posts[currentGame][index];
+            document.getElementById('post-title').innerText = post.title;
+            document.getElementById('post-media').innerHTML = `<img src="${post.media}" alt="첨부자료">`;
+            document.getElementById('post-content').innerHTML = `<div class="text-box">${post.content}</div>`;
+        }
+
+        function showWriteForm() {
+            document.getElementById('post-view').style.display = 'none';
+            document.getElementById('write-form').style.display = 'block';
+        }
+
+        function submitPost() {
+            let title = document.getElementById('write-title').value;
+            let media = document.getElementById('write-media').value || "https://via.placeholder.com/500x200/ff7675/fff?text=New+Post";
+            let text = document.getElementById('write-text').value;
+
+            if(title === "" || text === "") {
+                alert("제목과 내용을 입력해주세요.");
+                return;
+            }
+
+            posts[currentGame].push({
+                title: title,
+                media: media,
+                content: `<p>${text}</p>`
+            });
+
+            alert("게시글이 등록되었습니다!");
+            
+            document.getElementById('write-title').value = '';
+            document.getElementById('write-media').value = '';
+            document.getElementById('write-text').value = '';
+
+            renderBoard(); 
+            showPost(posts[currentGame].length - 1); 
+        }
+
+        renderBoard();
+    </script>
 </body>
 </html>
