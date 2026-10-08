@@ -1,1 +1,130 @@
+/* --- 기본 배경 및 초기화 --- */
+body {
+    background-color: #e0e0e0;
+    margin: 0; padding: 20px;
+}
+#container {
+    background-color: #333333;
+    width: 1000px; padding: 20px; margin: 0 auto;
+    border: 1px solid black; color: white;
+}
 
+/* --- 1. 헤더 영역 --- */
+#header {
+    display: flex; justify-content: space-between; align-items: center;
+    border: 2px solid white; padding: 10px; margin-bottom: 20px;
+}
+.profile-box {
+    display: flex; align-items: center; width: 250px;
+}
+.profile-img img {
+    width: 70px; height: 70px; border-radius: 50%;
+    border: 2px solid white; background-color: white; object-fit: cover;
+}
+.profile-text { margin-left: 15px; }
+.id-box, .rank-box {
+    background-color: white; color: black; width: 120px; height: 25px;
+    margin-bottom: 5px; text-align: center; font-weight: bold; line-height: 25px;
+}
+
+/* 관심 주제 영역 */
+.interest-box {
+    border: 2px solid white; padding: 10px; width: 400px; text-align: center;
+}
+.interest-box ul {
+    display: flex; justify-content: center; padding: 0; margin: 0 0 10px 0; list-style: none;
+}
+.circle { margin: 0 10px; }
+.circle img {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid white;
+}
+.interest-title { font-size: 14px; }
+
+/* 로그인 영역 */
+.login-btn {
+    display: inline-block; background-color: white; color: black;
+    padding: 10px 15px; text-decoration: none; font-weight: bold;
+}
+
+/* --- 2. 메인 컨텐츠 영역 분할 --- */
+#main-content {
+    display: flex;
+}
+
+/* 사이드바 */
+#sidebar {
+    width: 250px; border: 2px solid white; padding: 15px; margin-right: 30px;
+}
+.current-game {
+    background-color: white; color: black; padding: 10px; margin-bottom: 20px;
+    text-align: center; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 5px;
+}
+.btn-write {
+    display: block; background-color: #fdcb6e; color: black; padding: 10px;
+    text-align: center; text-decoration: none; font-weight: bold; margin-bottom: 20px;
+}
+.board-title {
+    text-align: center; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid white; font-weight: bold;
+}
+.board-list { padding: 0; list-style: none; }
+.board-list li { background-color: white; margin-bottom: 10px; text-align: center; }
+.board-list a {
+    display: block; padding: 10px; color: black; text-decoration: none;
+}
+.board-list a:hover { background-color: #dddddd; } /* 마우스 올렸을 때 색 변경 */
+
+/* 본문 영역 */
+#content-area {
+    width: 40%; flex-grow: 1; /* 남은 공간을 채우도록 확장 */
+    border: 2px solid white; padding: 20px; color: black;
+}
+.view-section h2 {
+    background-color: #bbbbbb; padding: 10px; margin-top: 0; text-align: center;
+}
+.video-box {
+    border: 5px solid #555555; background-color: #dddddd; min-height: 200px;
+    margin-bottom: 20px; display: flex; justify-content: center; align-items: center; text-align: center;
+}
+.video-box img { max-width: 100%; max-height: 250px; }
+.text-box {
+    background-color: white; padding: 10px; margin-bottom: 10px; min-height: 20px;
+}
+
+/* 표 스타일 (Image 2 조건 충족) */
+.info-table {
+    width: 100%; background-color: white; border-collapse: collapse; text-align: center;
+}
+.info-table th, .info-table td { border: 1px solid black; padding: 10px; }
+.info-table th { background-color: #ddd; }
+
+/* 글 작성 폼 스타일 */
+.form-area input, .form-area textarea {
+    width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; border: 2px solid #333;
+}
+.form-area textarea { height: 150px; resize: none; }
+.submit-btn {
+    display: block; background-color: #55efc4; padding: 15px; text-align: center;
+    color: black; text-decoration: none; font-weight: bold;
+}
+
+/* ========================================================
+   [핵심 기술] JS 없이 클릭으로 화면 바꾸는 CSS 트릭
+   ======================================================== */
+
+/* 1. 기본적으로 모든 게시글 화면(target-view)을 숨깁니다. */
+.target-view { 
+    display: none; 
+}
+
+/* 2. a 태그 클릭으로 URL 끝에 #post1 등이 생기면 해당 박스만 화면에 보여줍니다. */
+#post1:target, #post2:target, #post3:target, #write-form:target { 
+    display: block; 
+}
+
+/* 3. 특정 게시글이 타겟이 되어 켜졌을 때, 제일 밑에 있던 [기본 화면]을 숨깁니다. (~ 물결 기호 사용) */
+#post1:target ~ #default-view, 
+#post2:target ~ #default-view, 
+#post3:target ~ #default-view, 
+#write-form:target ~ #default-view { 
+    display: none; 
+}
