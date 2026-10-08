@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게임 공략집 기록 사이트</title>
+    <!-- CSS 파일 연결 (link 태그 사용) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 전체를 감싸는 큰 박스 (div) -->
+    <div id="container">
+        
+        <!-- 1. 헤더 영역 -->
+        <div id="header">
+            <!-- 프로필 영역 -->
+            <div class="profile-box">
+                <div class="profile-img">프로필</div>
+                <div class="profile-text">
+                    <div class="id-box">아이디</div>
+                    <div class="rank-box">랭킹</div>
+                </div>
+            </div>
+
+            <!-- 관심 주제 영역 -->
+            <div class="interest-box">
+                <ul>
+                    <li class="circle color-1"></li>
+                    <li class="circle color-2"></li>
+                    <li class="circle color-3"></li>
+                    <li class="circle color-4"></li>
+                    <li class="circle color-5"></li>
+                </ul>
+                <span class="interest-title">관심 주제 영역</span>
+            </div>
+
+            <!-- 로그인 영역 -->
+            <div class="login-box">
+                <a href="#">로그인/회원가입</a>
+            </div>
+        </div>
+
+        <!-- 2. 하단 컨텐츠 영역 (사이드 메뉴 + 본문) -->
+        <div id="main-content">
+            
+            <!-- 사이드 메뉴 -->
+            <div id="sidebar">
+                <div class="current-game">현재 게임</div>
+                <ul>
+                    <li><a href="#">글 작성칸</a></li>
+                    <li><a href="#">공략 목록</a></li>
+                    <li><a href="#">게시판 1</a></li>
+                    <li><a href="#">게시판 2</a></li>
+                    <li><a href="#">게시판 3</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. 본문 영역 (너비 40%) -->
+            <div id="content-area">
+                <h2>공략 제목</h2>
+                <!-- 영상/첨부 자료 박스 -->
+                <div class="video-box">
+                    <p>공략 영상 / 첨부 자료</p>
+                </div>
+                <!-- 내용글 박스들 -->
+                <div class="text-box">내용글</div>
+                <div class="text-box">내용글</div>
+                <div class="text-box">내용글</div>
+                <div class="text-box">내용글</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
