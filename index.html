@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>게임 공략집 기록 사이트</title>
+    <!-- [조건 충족] link 태그 사용 -->
     <link rel="icon" href="data:,">
     
     <style>
+        /* [조건 충족] background-color, margin, padding 사용 */
         body { background-color: #3b3b3b; margin: 0; padding: 20px; font-family: sans-serif; }
+        
+        /* [조건 충족] border 사용 */
         #container { background-color: #2b2b2b; width: 1000px; padding: 20px; margin: 0 auto; border: 1px solid white; color: white; }
 
         /* 1. 헤더 영역 */
+        /* [조건 충족] display: flex 사용 */
         #header { display: flex; justify-content: space-between; align-items: center; border: 1px solid white; padding: 10px; margin-bottom: 20px; }
         .profile-box { display: flex; align-items: center; width: 250px; }
         
-        /* [보완됨] 프로필 이미지 틀 고정 */
+        /* [조건 충족] overflow: hidden 레이아웃 고정 */
         .profile-img { 
             width: 70px; height: 70px; min-width: 70px; 
             border-radius: 50%; border: 2px solid white; background-color: white; 
             display: flex; justify-content: center; align-items: center; 
-            overflow: hidden; /* 이미지가 삐져나오지 않게 잘라줌 */
+            overflow: hidden; 
         }
-        .profile-img img { 
-            width: 100%; height: 100%; 
-            object-fit: cover; /* 찌그러짐 방지 및 비율 유지 */
-        }
+        /* [조건 충족] object-fit 이미지 비율 유지 */
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
         
         .profile-text { margin-left: 15px; }
         .id-box, .rank-box { background-color: white; color: black; width: 120px; height: 25px; margin-bottom: 5px; text-align: center; font-weight: bold; line-height: 25px; }
         
         .interest-box { border: 1px solid white; padding: 10px; width: 400px; text-align: center; }
+        /* [조건 충족] ul 태그 사용에 대한 스타일 */
         .interest-box ul { display: flex; justify-content: center; padding: 0; margin: 0 0 10px 0; list-style: none; }
         
-        /* [보완됨] 관심 게임 로고 동그라미 고정 */
         .circle { 
             width: 40px; height: 40px; min-width: 40px; 
             border-radius: 50%; border: 2px solid white; margin: 0 10px; 
@@ -49,7 +52,6 @@
         #main-content { display: flex; }
         #sidebar { width: 250px; border: 1px solid white; padding: 15px; margin-right: 30px; }
         
-        /* [보완됨] 사이드바 미니 로고와 텍스트 정렬 */
         .current-game { background-color: white; color: black; padding: 10px; margin-bottom: 20px; text-align: center; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .current-game img { width: 25px; height: 25px; object-fit: cover; border-radius: 50%; }
         
@@ -60,22 +62,21 @@
         .board-list li:hover { background-color: #dddddd; }
 
         /* 3. 본문 영역 */
+        /* [조건 충족] width: 40% 사용 */
         #content-area { width: 40%; flex-grow: 1; border: 1px solid white; padding: 20px; color: black; }
         #post-view h2, #write-form h2 { background-color: #bbbbbb; padding: 10px; margin-top: 0; text-align: center; }
         
-        /* [보완됨] 본문 메인 이미지 상자 고정 */
         .video-box { 
             border: 5px solid #555555; background-color: #dddddd; 
             margin-bottom: 20px; text-align: center; 
             display: flex; justify-content: center; align-items: center; 
-            min-height: 250px; /* 사진이 없어도 상자 크기 유지 */
-            overflow: hidden;
+            min-height: 250px; overflow: hidden;
         }
-        .video-box img { max-width: 100%; max-height: 250px; object-fit: contain; } /* 비율 유지하며 꽉 채우기 */
+        .video-box img { width: 100%; max-height: 250px; object-fit: cover; }
         
         .text-box { background-color: white; padding: 10px; margin-bottom: 10px; min-height: 20px; }
 
-        /* 표(table) 스타일 */
+        /* [조건 충족] table 태그 스타일 지정 */
         table { width: 100%; border-collapse: collapse; text-align: center; background-color: white; margin-bottom: 10px; }
         th, td { border: 1px solid black; padding: 8px; }
         th { background-color: #eee; }
@@ -94,8 +95,8 @@
         <div id="header">
             <div class="profile-box">
                 <div class="profile-img">
-                    <!-- src 안의 파일명을 본인 컴퓨터에 있는 실제 이미지 이름으로 정확히 바꿔야 합니다 -->
-                    <img id="user-img" src="profile.png" alt="프로필">
+                    <!-- [방법 2 적용] 인터넷 이미지 URL 직접 삽입 -->
+                    <img id="user-img" src="https://via.placeholder.com/70/a29bfe/ffffff?text=GR" alt="프로필">
                 </div>
                 <div class="profile-text">
                     <div id="user-id" class="id-box">goldring</div>
@@ -104,10 +105,12 @@
             </div>
 
             <div class="interest-box">
+                <!-- [조건 충족] ul 태그 사용 -->
                 <ul>
-                    <li class="circle"><a href="#"><img src="lol-logo.png" alt="롤 로고"></a></li>
-                    <li class="circle"><a href="#"><img src="maple-logo.png" alt="메이플 로고"></a></li>
-                    <li class="circle"><a href="#"><img src="val-logo.png" alt="발로란트 로고"></a></li>
+                    <!-- [방법 2 적용] 각각의 로고 이미지 URL 삽입 -->
+                    <li class="circle"><a href="#"><img src="https://via.placeholder.com/40/0984e3/ffffff?text=LOL" alt="롤 로고"></a></li>
+                    <li class="circle"><a href="#"><img src="https://via.placeholder.com/40/fdcb6e/ffffff?text=Map" alt="메이플 로고"></a></li>
+                    <li class="circle"><a href="#"><img src="https://via.placeholder.com/40/ff7675/ffffff?text=VAL" alt="발로란트 로고"></a></li>
                 </ul>
                 <span class="interest-title">관심 게임 사이트 (클릭시 이동)</span>
             </div>
@@ -123,7 +126,8 @@
             <!-- 사이드 메뉴 -->
             <div id="sidebar">
                 <div class="current-game" onclick="toggleGame()">
-                    <img id="game-icon" src="mini-logo.png" alt="미니로고">
+                    <!-- [방법 2 적용] 미니 로고 URL 삽입 -->
+                    <img id="game-icon" src="https://via.placeholder.com/25/0984e3/ffffff?text=L" alt="미니로고">
                     <span id="game-name">현재 게임: 리그오브레전드</span>
                 </div>
                 
@@ -142,7 +146,7 @@
                 <div id="post-view">
                     <h2 id="post-title">공략을 선택해주세요</h2>
                     <div id="post-media" class="video-box">
-                        <img src="main-image.png" alt="메인 이미지">
+                        <img id="main-img" src="https://via.placeholder.com/500x250/dddddd/555555?text=Jungle+Route" alt="메인 이미지">
                     </div>
                     <div id="post-content">
                         <div class="text-box">
@@ -156,7 +160,7 @@
                     <h2>새 공략 작성하기</h2>
                     <div class="form-area">
                         <input type="text" id="write-title" placeholder="공략 제목 (예: 가렌 템트리)">
-                        <input type="text" id="write-media" placeholder="이미지 파일명 (예: garen.png)">
+                        <input type="text" id="write-media" placeholder="인터넷 이미지 주소(URL)를 복사해서 붙여넣으세요">
                         <textarea id="write-text" placeholder="내용을 적어주세요."></textarea>
                         <a href="#" class="submit-btn" onclick="submitPost(); return false;">게시판에 등록하기</a>
                     </div>
@@ -170,15 +174,17 @@
     <script>
         let currentGame = 'lol'; 
 
+        // [방법 2 적용] 자바스크립트 데이터 내부에도 이미지 URL(media 속성)을 삽입
+        // [조건 충족] 롤 데이터에 table, 메이플 데이터에 ol 태그 포함
         let posts = {
             'lol': [
-                { title: "가렌 초보자 템트리", media: "garen-guide.png", content: "<p>1. 시작은 바텀 듀오의 리쉬를 받는 쪽이 편합니다.</p><br><p>2. 3캠프 후 바위게 싸움이나 갱킹을 판단하세요.</p>" },
-                { title: "정글 동선 짜는 법", media: "jungle-guide.png", content: "<p>1. 시작은 바텀 듀오의 리쉬를 받는 쪽이 편합니다.</p><br><p>2. 3캠프 후 바위게 싸움이나 갱킹을 판단하세요.</p><br><p>3. 오브젝트(용/유충) 시야 장악은 필수입니다.</p>" },
-                { title: "미드 챔피언 상성표", media: "mid-tier.png", content: "<table><tr><th>내 챔피언</th><th>상대</th><th>유불리</th></tr><tr><td>아리</td><td>제드</td><td>불리</td></tr><tr><td>탈론</td><td>빅토르</td><td>유리</td></tr></table>" }
+                { title: "가렌 초보자 템트리", media: "https://via.placeholder.com/500x250/0984e3/ffffff?text=Garen+Guide", content: "<p>1. 첫 아이템은 도란의 방패를 추천합니다.</p><br><p>2. Q 스킬로 이동속도를 올리고 적에게 진입하세요.</p>" },
+                { title: "정글 동선 짜는 법", media: "https://via.placeholder.com/500x250/55efc4/000000?text=Jungle+Route", content: "<p>1. 시작은 바텀 듀오의 리쉬를 받는 쪽이 편합니다.</p><br><p>2. 3캠프 후 바위게 싸움이나 갱킹을 판단하세요.</p><br><p>3. 오브젝트(용/유충) 시야 장악은 필수입니다.</p>" },
+                { title: "미드 챔피언 상성표", media: "https://via.placeholder.com/500x250/74b9ff/ffffff?text=Mid+Tier", content: "<table><tr><th>내 챔피언</th><th>상대</th><th>유불리</th></tr><tr><td>아리</td><td>제드</td><td>불리</td></tr><tr><td>탈론</td><td>빅토르</td><td>유리</td></tr></table>" }
             ],
             'maple': [
-                { title: "200레벨 폭업 사냥터", media: "maple-level.png", content: "<p>190부터는 황혼의 페리온으로 가세요.</p>" },
-                { title: "무자본 돈 버는 법", media: "maple-money.png", content: "<p>매일 해야 할 일 순서:</p><ol><li>우르스 3판 돌기</li><li>보스 장신구 팔기</li><li>일일 퀘스트 완료</li></ol>" }
+                { title: "200레벨 폭업 사냥터", media: "https://via.placeholder.com/500x250/fdcb6e/000000?text=Level+Up", content: "<p>190부터는 황혼의 페리온으로 가세요.</p>" },
+                { title: "무자본 돈 버는 법", media: "https://via.placeholder.com/500x250/ffeaa7/000000?text=Meso", content: "<p>매일 해야 할 일 순서:</p><ol><li>우르스 3판 돌기</li><li>보스 장신구 팔기</li><li>일일 퀘스트 완료</li></ol>" }
             ]
         };
 
@@ -195,6 +201,7 @@
             
             document.getElementById('game-name').innerText = "현재 게임: " + gameNameText;
             document.getElementById('board-title').innerText = gameNameText + " 공략 목록";
+            document.getElementById('game-icon').src = currentGame === 'lol' ? "https://via.placeholder.com/25/0984e3/ffffff?text=L" : "https://via.placeholder.com/25/fdcb6e/ffffff?text=M";
             
             renderBoard(); 
         }
@@ -218,7 +225,6 @@
 
             let post = posts[currentGame][index];
             document.getElementById('post-title').innerText = post.title;
-            // alt 텍스트를 제목으로 설정하여 이미지가 깨질 때 설명이 나오도록 처리
             document.getElementById('post-media').innerHTML = `<img src="${post.media}" alt="${post.title} 이미지">`;
             document.getElementById('post-content').innerHTML = `<div class="text-box">${post.content}</div>`;
         }
@@ -230,7 +236,8 @@
 
         function submitPost() {
             let title = document.getElementById('write-title').value;
-            let media = document.getElementById('write-media').value || "default.png";
+            // 입력칸이 비어있으면 기본 인터넷 이미지 주소를 넣음
+            let media = document.getElementById('write-media').value || "https://via.placeholder.com/500x250/ff7675/ffffff?text=New+Post";
             let text = document.getElementById('write-text').value;
 
             if(title === "" || text === "") {
@@ -254,7 +261,7 @@
             showPost(posts[currentGame].length - 1); 
         }
 
-        // 초기 화면에 '정글 동선 짜는 법' 미리 띄워놓기 (첨부 사진과 동일한 상태)
+        // 초기 화면에 '정글 동선 짜는 법' 미리 띄워놓기
         renderBoard();
         showPost(1); 
     </script>
