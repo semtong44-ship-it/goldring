@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>게임 공략집 기록 사이트</title>
-    <link rel="icon" href="data:,">
-    <!-- CSS 파일 연결 -->
+    <!-- HTML 조건 12: link 태그를 이용해 CSS 파일 연결 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- HTML 조건 4, 14: div 태그와 id 속성 -->
     <div id="container">
-        <!-- 1. 헤더 영역 -->
+        <!-- HTML 조건 1: h1 태그 -->
+        <h1>게임 공략 커뮤니티</h1>
+        
         <div id="header">
+            <!-- HTML 조건 13: class 속성 -->
             <div class="profile-box">
-                <div class="profile-img"><img id="profile-img-tag" src="https://via.placeholder.com/70?text=Guest" alt="프로필"></div>
+                <!-- HTML 조건 10: img 태그와 alt 속성 -->
+                <div class="profile-img"><img id="profile-img-tag" src="https://via.placeholder.com/70?text=Guest" alt="프로필 사진"></div>
                 <div class="profile-text">
                     <div class="id-box" id="user-id">게스트</div>
                     <div class="rank-box" id="user-rank">로그인 필요</div>
@@ -20,39 +24,65 @@
             </div>
 
             <div class="interest-box">
+                <!-- HTML 조건 6: ul 태그 -->
                 <ul>
-                    <li class="circle"><a href="https://kr.leagueoflegends.com" target="_blank"><img src="https://via.placeholder.com/40/0984e3/ffffff?text=LOL" alt="롤"></a></li>
-                    <li class="circle"><a href="https://maplestory.nexon.com" target="_blank"><img src="https://via.placeholder.com/40/fdcb6e/ffffff?text=Map" alt="메이플"></a></li>
-                    <li class="circle"><a href="https://playvalorant.com" target="_blank"><img src="https://via.placeholder.com/40/ff7675/ffffff?text=VAL" alt="발로란트"></a></li>
+                    <!-- HTML 조건 8, 9: li 태그, a 태그 -->
+                    <li class="circle"><a href="https://kr.leagueoflegends.com" target="_blank"><img src="https://via.placeholder.com/40/0984e3/ffffff?text=LOL" alt="롤 아이콘"></a></li>
+                    <li class="circle"><a href="https://maplestory.nexon.com" target="_blank"><img src="https://via.placeholder.com/40/fdcb6e/ffffff?text=Map" alt="메이플 아이콘"></a></li>
+                    <li class="circle"><a href="https://playvalorant.com" target="_blank"><img src="https://via.placeholder.com/40/ff7675/ffffff?text=VAL" alt="발로란트 아이콘"></a></li>
                 </ul>
-                <span class="interest-title">즐겨찾는 게임 사이트 이동</span>
+                <!-- HTML 조건 5: span 태그 -->
+                <span class="interest-title">즐겨찾는 게임 사이트</span>
             </div>
 
             <div class="login-box">
                 <button onclick="login()">로그인</button>
-                <button onclick="signup()">회원가입</button>
+                <button onclick="changeTextColor()">글자색 변경</button>
+                <button onclick="countClick()">클릭 수: <span id="click-count">0</span></button>
             </div>
         </div>
 
-        <!-- 2. 메인 컨텐츠 영역 -->
         <div id="main-content">
             <div id="sidebar">
-                <div class="current-game" onclick="changeGame()" style="cursor: pointer;" title="클릭하면 게임이 바뀝니다">
-                    🎮 현재 게임: <span id="current-game-name">리그오브레전드</span> (변경)
+                <div class="current-game" onclick="changeGame()" style="cursor: pointer;">
+                    🎮 현재 게임: <span id="current-game-name">리그오브레전드</span>
                 </div>
                 <div class="btn-write" onclick="showWriteForm()">✍️ 글 작성칸</div>
                 
-                <div class="board-title" id="board-title-name">리그오브레전드 공략 목록</div>
-                <ul id="board-list">
-                </ul>
+                <!-- HTML 조건 1: h3 태그 -->
+                <h3 class="board-title" id="board-title-name">공략 목록</h3>
+                <ul id="board-list"></ul>
+
+                <div class="site-info">
+                    <!-- HTML 조건 2, 3: p 태그, br 태그 -->
+                    <p>사이트 이용 안내<br>매너를 지켜주세요!</p>
+                    
+                    <!-- HTML 조건 11: table, tr, th, td 태그 -->
+                    <table>
+                        <tr>
+                            <th>버전</th>
+                            <th>업데이트 날짜</th>
+                        </tr>
+                        <tr>
+                            <td>v1.0</td>
+                            <td>오늘</td>
+                        </tr>
+                    </table>
+                    
+                    <!-- HTML 조건 7: ol 태그 -->
+                    <ol>
+                        <li>욕설 금지</li>
+                        <li>광고 금지</li>
+                    </ol>
+                </div>
             </div>
 
-            <!-- 3. 본문 영역 -->
             <div id="content-area">
                 <div id="post-view">
+                    <!-- HTML 조건 1: h2 태그 -->
                     <h2 id="post-title">공략을 선택해주세요</h2>
                     <div class="video-box" id="post-media">
-                        <img src="https://via.placeholder.com/500x200?text=Select+a+Post" alt="첨부자료">
+                        <img src="https://via.placeholder.com/500x200?text=Select+a+Post" alt="첨부자료 썸네일">
                     </div>
                     <div id="post-content-area">
                         <div class="text-box">좌측 게시판에서 글을 선택하거나 새 글을 작성해보세요!</div>
@@ -61,8 +91,8 @@
 
                 <div id="write-form">
                     <h2 style="color: white; margin-top: 0;">새 공략 작성하기</h2>
-                    <input type="text" id="write-title" placeholder="공략 제목을 입력하세요 (예: 가렌 템트리)">
-                    <input type="text" id="write-media" placeholder="첨부 이미지 URL (인터넷 주소 복사하여 붙여넣기)">
+                    <input type="text" id="write-title" placeholder="공략 제목을 입력하세요">
+                    <input type="text" id="write-media" placeholder="첨부 이미지 URL">
                     <textarea id="write-content" placeholder="공략 내용을 자세히 적어주세요 (엔터로 줄바꿈)"></textarea>
                     <button onclick="submitPost()">게시판에 등록하기</button>
                 </div>
@@ -70,109 +100,7 @@
         </div>
     </div>
 
-    <script>
-        let currentGame = 'lol'; 
-        
-        let posts = {
-            'lol': [
-                { id: 1, title: "[필독] 롤 초보자를 위한 가렌 공략", media: "https://via.placeholder.com/500x200/0984e3/ffffff?text=Garen+Guide", content: ["1. 가렌은 Q를 쓰고 달립니다.", "2. 위험할 땐 W로 방어하세요.", "3. 적 피가 없을 때 R로 마무리!"] },
-                { id: 2, title: "정글 동선 짜는 법 (초보용)", media: "https://via.placeholder.com/500x200/74b9ff/ffffff?text=Jungle+Route", content: ["1. 블루 시작 후 두꺼비, 늑대 순서로 먹습니다.", "2. 바위게 싸움은 항상 팀원 백업을 보세요."] },
-                { id: 3, title: "미드 챔피언 상성표", media: "https://via.placeholder.com/500x200/55efc4/000000?text=Mid+Tier", content: ["<table><tr><th>내 챔피언</th><th>상대</th><th>유불리</th></tr><tr><td>아리</td><td>제드</td><td>불리</td></tr><tr><td>탈론</td><td>빅토르</td><td>유리</td></tr></table>"] }
-            ],
-            'maple': [
-                { id: 1, title: "메이플 200레벨 폭업 사냥터", media: "https://via.placeholder.com/500x200/fdcb6e/ffffff?text=Maple+Level+Up", content: ["1. 190~200: 황혼의 페리온 버려진 발굴지대 2", "2. 경험치 쿠폰은 필수입니다!"] },
-                { id: 2, title: "무자본 돈 버는 법 정리", media: "https://via.placeholder.com/500x200/ffeaa7/000000?text=Meso+Guide", content: ["<ol><li>매일매일 우르스 3판 돌기</li><li>보스 장신구 팔기</li><li>일일 퀘스트 완료하기</li></ol>"] }
-            ]
-        };
-
-        function login() {
-            document.getElementById('user-id').innerText = "goldring";
-            document.getElementById('user-rank').innerText = "랭킹 32위";
-            document.getElementById('profile-img-tag').src = "https://via.placeholder.com/70/a29bfe/ffffff?text=GR"; 
-            alert("로그인 되었습니다!");
-        }
-
-        function signup() {
-            let newId = prompt("사용할 아이디를 입력하세요:", "새유저");
-            if(newId) {
-                let randomRank = Math.floor(Math.random() * 901) + 100; 
-                document.getElementById('user-id').innerText = newId;
-                document.getElementById('user-rank').innerText = "랭킹 " + randomRank + "위";
-                document.getElementById('profile-img-tag').src = "https://via.placeholder.com/70/55efc4/000000?text=" + newId.charAt(0);
-                alert("회원가입 완료! 랭킹이 배정되었습니다.");
-            }
-        }
-
-        function changeGame() {
-            currentGame = (currentGame === 'lol') ? 'maple' : 'lol';
-            let gameName = (currentGame === 'lol') ? '리그오브레전드' : '메이플스토리';
-            
-            document.getElementById('current-game-name').innerText = gameName;
-            document.getElementById('board-title-name').innerText = gameName + " 공략 목록";
-            
-            renderSidebar(); 
-        }
-
-        function renderSidebar() {
-            let listHtml = '';
-            let currentPosts = posts[currentGame]; 
-
-            for(let i = 0; i < currentPosts.length; i++) {
-                listHtml += `<li onclick="showPost(${i})">📄 ${currentPosts[i].title}</li>`;
-            }
-            document.getElementById('board-list').innerHTML = listHtml;
-        }
-
-        function showPost(index) {
-            document.getElementById('post-view').style.display = 'block';
-            document.getElementById('write-form').style.display = 'none';
-
-            let post = posts[currentGame][index];
-            document.getElementById('post-title').innerText = post.title;
-            document.getElementById('post-media').innerHTML = `<img src="${post.media}" alt="첨부자료">`;
-            
-            let contentHtml = '';
-            for(let i=0; i < post.content.length; i++) {
-                contentHtml += `<div class="text-box">${post.content[i]}</div>`;
-            }
-            document.getElementById('post-content-area').innerHTML = contentHtml;
-        }
-
-        function showWriteForm() {
-            document.getElementById('post-view').style.display = 'none';
-            document.getElementById('write-form').style.display = 'block';
-        }
-
-        function submitPost() {
-            let title = document.getElementById('write-title').value;
-            let media = document.getElementById('write-media').value || "https://via.placeholder.com/500x200?text=New+Post+Image";
-            let contentText = document.getElementById('write-content').value;
-
-            if(title === "" || contentText === "") {
-                alert("제목과 내용을 모두 입력해주세요!");
-                return;
-            }
-
-            let contentArray = contentText.split('\n');
-
-            posts[currentGame].push({
-                id: posts[currentGame].length + 1,
-                title: title,
-                media: media,
-                content: contentArray
-            });
-
-            alert("성공적으로 등록되었습니다!");
-            
-            document.getElementById('write-title').value = '';
-            document.getElementById('write-media').value = '';
-            document.getElementById('write-content').value = '';
-
-            renderSidebar(); 
-            showPost(posts[currentGame].length - 1); 
-        }
-
-        renderSidebar();
-    </script>
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="script.js"></script>
 </body>
 </html>
