@@ -1,57 +1,52 @@
-/* 기본 설정 */
+/* CSS 조건 1, 5, 6: background-color, margin, padding 적용 */
 body { background-color: #e0e0e0; margin: 0; padding: 20px; font-family: sans-serif; }
-#container { background-color: #333333; width: 1000px; padding: 20px; margin: 0 auto; border: 1px solid black; color: black; }
 
-/* 헤더 영역 */
-#header { display: flex; justify-content: space-between; border: 2px solid white; padding: 10px; margin-bottom: 20px; color: white; }
+/* CSS 조건 2, 3: border, width 적용 */
+#container { background-color: #333333; width: 1000px; padding: 20px; margin: 0 auto; border: 1px solid black; color: white; }
+
+h1 { text-align: center; color: #55efc4; margin-top: 0; }
+
+/* CSS 조건 7: display(flex) 적용 */
+#header { display: flex; justify-content: space-between; border: 2px solid white; padding: 10px; margin-bottom: 20px; }
 .profile-box { display: flex; align-items: center; width: 250px; }
-.profile-img { 
-    width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; 
-    background-color: white; display: flex; justify-content: center; align-items: center;
-    overflow: hidden; 
-}
+
+/* CSS 조건 4: height 적용 */
+.profile-img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; background-color: white; display: flex; justify-content: center; align-items: center; overflow: hidden; }
 .profile-img img { width: 100%; height: 100%; object-fit: cover; }
 .profile-text { margin-left: 15px; }
 .id-box, .rank-box { background-color: white; color: black; width: 120px; height: 25px; margin-bottom: 5px; text-align: center; line-height: 25px; font-weight: bold; }
 
-/* 관심 주제 영역 */
 .interest-box { border: 2px solid white; padding: 10px; width: 400px; text-align: center; }
 .interest-box ul { display: flex; justify-content: center; padding: 0; margin: 0 0 10px 0; list-style: none; }
-.circle { 
-    width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; 
-    margin: 0 10px; overflow: hidden; cursor: pointer; display: flex; justify-content: center; align-items: center;
-}
+.circle { width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; margin: 0 10px; overflow: hidden; cursor: pointer; display: flex; justify-content: center; align-items: center; }
 .circle img { width: 100%; height: 100%; object-fit: cover; }
-.login-box { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
-.login-box button { background-color: white; border: none; padding: 5px 10px; cursor: pointer; font-weight: bold; }
 
-/* 메인 컨텐츠 영역 */
+.login-box { display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+
+/* CSS 조건 7: display(inline-block) 적용 */
+.login-box button { display: inline-block; background-color: white; border: none; padding: 5px 10px; cursor: pointer; font-weight: bold; }
+
 #main-content { display: flex; }
 #sidebar { width: 250px; border: 2px solid white; padding: 15px; margin-right: 30px; }
-.current-game { background-color: #55efc4; padding: 10px; margin-bottom: 20px; text-align: center; font-weight: bold; }
+.current-game { background-color: #55efc4; color: black; padding: 10px; margin-bottom: 20px; text-align: center; font-weight: bold; }
 .btn-write { display: block; background-color: #fdcb6e; padding: 10px; text-align: center; text-decoration: none; color: black; font-weight: bold; margin-bottom: 20px; cursor: pointer; }
-.board-title { color: white; text-align: center; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid white; padding-bottom: 5px;}
+.board-title { text-align: center; margin-bottom: 10px; font-weight: bold; border-bottom: 1px solid white; padding-bottom: 5px;}
 #board-list { padding: 0; list-style: none; }
-#board-list li { background-color: white; margin-bottom: 10px; padding: 10px; text-align: center; cursor: pointer; font-size: 14px; }
+#board-list li { background-color: white; color: black; margin-bottom: 10px; padding: 10px; text-align: center; cursor: pointer; font-size: 14px; }
 #board-list li:hover { background-color: #dddddd; }
 
-/* 본문 영역 */
-#content-area { width: 40%; flex-grow: 1; border: 2px solid white; padding: 20px; background-color: #444; color: white;}
+.site-info { margin-top: 20px; font-size: 13px; border-top: 1px dashed white; padding-top: 10px; }
+table { width: 100%; border-collapse: collapse; text-align: center; background-color: white; color: black; margin: 10px 0; }
+th, td { border: 1px solid black; padding: 5px; }
+th { background-color: #eee; }
+
+#content-area { width: 40%; flex-grow: 1; border: 2px solid white; padding: 20px; background-color: #444; }
 #post-view h2 { background-color: #bbbbbb; color: black; padding: 10px; margin-top: 0; text-align: center; }
-.video-box { 
-    border: 5px solid #555; background-color: #ddd; text-align: center; margin-bottom: 20px; color: black;
-    overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 200px;
-}
+.video-box { border: 5px solid #555; background-color: #ddd; text-align: center; margin-bottom: 20px; color: black; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 200px; }
 .video-box img { width: 100%; height: auto; max-height: 250px; object-fit: cover;}
 .text-box { background-color: white; color: black; padding: 10px; margin-bottom: 10px; min-height: 20px; }
 
-/* 테이블 추가 디자인 */
-table { width: 100%; border-collapse: collapse; text-align: center; background-color: white; color: black; }
-th, td { border: 1px solid black; padding: 8px; }
-th { background-color: #eee; }
-
-/* 글 작성 폼 */
 #write-form { display: none; }
 #write-form input, #write-form textarea { width: 100%; margin-bottom: 10px; padding: 5px; box-sizing: border-box; }
 #write-form textarea { height: 150px; }
-#write-form button { padding: 10px; width: 100%; background-color: #55efc4; border: none; cursor: pointer; font-weight: bold;}
+#write-form button { padding: 10px; width: 100%; background-color: #55efc4; border: none; cursor: pointer; font-weight: bold; color: black;}
