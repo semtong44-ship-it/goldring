@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>게임 공략집 기록 사이트</title>
-    <!-- HTML 조건 12: link 태그를 이용해 CSS 파일 연결 -->
+    <!-- CSS 파일 연결 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- HTML 조건 4, 14: div 태그와 id 속성 -->
     <div id="container">
-        <!-- HTML 조건 1: h1 태그 -->
         <h1>게임 공략 커뮤니티</h1>
         
         <div id="header">
-            <!-- HTML 조건 13: class 속성 -->
             <div class="profile-box">
-                <!-- HTML 조건 10: img 태그와 alt 속성 -->
                 <div class="profile-img"><img id="profile-img-tag" src="https://via.placeholder.com/70?text=Guest" alt="프로필 사진"></div>
                 <div class="profile-text">
                     <div class="id-box" id="user-id">게스트</div>
@@ -24,19 +20,18 @@
             </div>
 
             <div class="interest-box">
-                <!-- HTML 조건 6: ul 태그 -->
                 <ul>
-                    <!-- HTML 조건 8, 9: li 태그, a 태그 -->
                     <li class="circle"><a href="https://kr.leagueoflegends.com" target="_blank"><img src="https://via.placeholder.com/40/0984e3/ffffff?text=LOL" alt="롤 아이콘"></a></li>
                     <li class="circle"><a href="https://maplestory.nexon.com" target="_blank"><img src="https://via.placeholder.com/40/fdcb6e/ffffff?text=Map" alt="메이플 아이콘"></a></li>
                     <li class="circle"><a href="https://playvalorant.com" target="_blank"><img src="https://via.placeholder.com/40/ff7675/ffffff?text=VAL" alt="발로란트 아이콘"></a></li>
                 </ul>
-                <!-- HTML 조건 5: span 태그 -->
                 <span class="interest-title">즐겨찾는 게임 사이트</span>
             </div>
 
             <div class="login-box">
-                <button onclick="login()">로그인</button>
+                <!-- 버튼 클릭 시 팝업창 열기 함수 실행 -->
+                <button onclick="openModal('login-modal')">로그인</button>
+                <button onclick="openModal('signup-modal')">회원가입</button>
                 <button onclick="changeTextColor()">글자색 변경</button>
                 <button onclick="countClick()">클릭 수: <span id="click-count">0</span></button>
             </div>
@@ -49,15 +44,11 @@
                 </div>
                 <div class="btn-write" onclick="showWriteForm()">✍️ 글 작성칸</div>
                 
-                <!-- HTML 조건 1: h3 태그 -->
                 <h3 class="board-title" id="board-title-name">공략 목록</h3>
                 <ul id="board-list"></ul>
 
                 <div class="site-info">
-                    <!-- HTML 조건 2, 3: p 태그, br 태그 -->
                     <p>사이트 이용 안내<br>매너를 지켜주세요!</p>
-                    
-                    <!-- HTML 조건 11: table, tr, th, td 태그 -->
                     <table>
                         <tr>
                             <th>버전</th>
@@ -68,8 +59,6 @@
                             <td>오늘</td>
                         </tr>
                     </table>
-                    
-                    <!-- HTML 조건 7: ol 태그 -->
                     <ol>
                         <li>욕설 금지</li>
                         <li>광고 금지</li>
@@ -79,7 +68,6 @@
 
             <div id="content-area">
                 <div id="post-view">
-                    <!-- HTML 조건 1: h2 태그 -->
                     <h2 id="post-title">공략을 선택해주세요</h2>
                     <div class="video-box" id="post-media">
                         <img src="https://via.placeholder.com/500x200?text=Select+a+Post" alt="첨부자료 썸네일">
@@ -100,7 +88,29 @@
         </div>
     </div>
 
-    <!-- 자바스크립트 파일 연결 -->
+    <!-- 1. 로그인 팝업창 (기본적으로 숨겨져 있음) -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
+            <h2>1. 로그인</h2>
+            <input type="text" id="login-id" placeholder="아이디">
+            <input type="password" id="login-pw" placeholder="비밀번호">
+            <button onclick="processLogin()" class="submit-modal-btn">로그인</button>
+        </div>
+    </div>
+
+    <!-- 2. 회원가입 팝업창 -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('signup-modal')">&times;</span>
+            <h2>회원가입</h2>
+            <input type="text" id="signup-id" placeholder="사용할 아이디">
+            <input type="password" id="signup-pw" placeholder="사용할 비밀번호">
+            <button onclick="processSignup()" class="submit-modal-btn">가입하기</button>
+        </div>
+    </div>
+
+    <!-- 자바스크립트 연결 -->
     <script src="script.js"></script>
 </body>
 </html>
